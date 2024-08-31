@@ -19,11 +19,7 @@ app.post("/books", async (request, response) => {
     console.log(request.body);
 
     // Validation
-    if (
-      !request.body.title ||
-      !request.body.author ||
-      !request.body.publishyear
-    ) {
+    if ( !request.body.title || !request.body.author || !request.body.publishyear) {
       return response.status(400).send({
         // Changed status code to 400 for client errors
         message: "Send all required fields: title, author, publishyear",
@@ -54,6 +50,20 @@ app.get('/books', async (request, response) => {
       count: books.length,
       data: books
     });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+
+
+// Get One Book from database by id
+app.get('/books/:id', async (request, response) => {
+  try {
+    const { id } = request.params;
+    const book = await Book.findById(id);
+    return response.status(200).json(book);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
