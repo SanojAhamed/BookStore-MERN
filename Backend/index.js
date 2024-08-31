@@ -8,6 +8,18 @@ const app = express();
 
 app.use(express.json());
 
+// CORS POLICY
+// app.use(cors());
+
+//  Custom Origins
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+  })
+);
+
 app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send("Creat a first HTTP Route");
