@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';  
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import BackButton from '../components/Backbutton';  // BackButton - A component that displays a back button.
+import BackButton from '../components/backbutton';  // BackButton - A component that displays a back button.
 import Spinner from '../components/Spinner';  // Spinner - A component that displays a loading spinner while the data is being fetched.
 
 const ShowBook = () => {
   const [book, setBook] = useState({});      // book - A state variable that stores the book details.
-  const [loading, setLoading] = useState(false);   // loading - A state variable that stores the loading status.
-  const { id } = useParams();   // useParams - A hook that returns an object of key/value pairs of URL parameters.
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
