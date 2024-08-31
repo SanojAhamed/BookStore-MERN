@@ -1,28 +1,22 @@
-import express, { request } from "express";
-
-import { PORT, mongoDBurl } from "./config.js"; // import config.js file
-import mongoose from "mongoose";
+import express from 'express';
+import { PORT, mongoDBURL } from './config.js'; // import config.js file
+import mongoose from 'mongoose';
 
 const app = express();
 
 app.get("/", (request, response) => {
-  //Parameter with callback function
   console.log(request);
-  return response.status(257).send("first HTTP Route"); //FTP code
+  return response.status(234).send("Creat a first HTTP Route"); 
 });
 
-
-mongoose
-  .connect(mongoDBurl) //connect DB
+mongoose     
+  .connect(mongoDBURL) //connect DB
   .then(() => {
-    // success and failure
-    console.log("App is Connected Successfully.");
+    console.log('App is Connected DB Successfully.');
     app.listen(PORT, () => {
-      // only run when DB server is successfull
-      console.log("App is listening the port : ${PORT}"); //   Listen on a 5555 port for incoming requests
+      console.log(`App is listening the port : ${PORT}`); //   Listen on a 5555 port for incoming requests
     });
   })
-
-  // .catch((error) => {
-  //   console.log(error);
-  // });
+  .catch((error) => {
+    console.log(error);
+  }) ;
