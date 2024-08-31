@@ -1,13 +1,11 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
+import React from 'react'  
+import ReactDOM from 'react-dom/client';  // ReactDOM - A package that provides DOM-specific methods that can be used at the top level of your app.
+import App from './App.jsx';     // App - A component that contains the routes for the application.
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';  // BrowserRouter - A component that uses the HTML5 history API to keep your UI in sync with the URL. 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );

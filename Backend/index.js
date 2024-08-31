@@ -3,22 +3,22 @@ import { Book } from "./models/booksmodel.js";
 import { PORT, mongoDBURL } from "./config.js"; // import config.js file
 import mongoose from "mongoose";
 import bookRoute from './routes/bookRoute.js';
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
 
 // CORS POLICY
-// app.use(cors());
+app.use(cors());
 
-//  Custom Origins
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type'],
+//   })
+// );
 
 app.get("/", (request, response) => {
   console.log(request);
