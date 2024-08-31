@@ -1,20 +1,18 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const bookschema = mongoose.Schema(   //Mongoose Schema defines the structure and property of the document in the MongoDB collection
+const bookSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      requried: true,
+      required: true,
     },
-
     author: {
       type: String,
-      requried: true,
+      required: true,
     },
-
     publishyear: {
       type: Number,
-      requried: true,
+      required: true,
     },
   },
   {
@@ -22,4 +20,4 @@ const bookschema = mongoose.Schema(   //Mongoose Schema defines the structure an
   }
 );
 
-export const Book = mongoose.model('Cat', bookschema);  // export - import in other files
+export const Book = mongoose.model('Book', bookSchema);
