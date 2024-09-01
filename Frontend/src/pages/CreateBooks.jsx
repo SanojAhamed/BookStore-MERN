@@ -5,12 +5,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack"; // useSnackbar - A custom hook that returns an object with enqueueSnackbar function to show snackbar messages.
 
+
 const CreateBooks = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveBook = () => {
     const data = {
@@ -24,12 +26,14 @@ const CreateBooks = () => {
      .post("http://localhost:5555/books", data)
       .then(() => {
         setLoading(false);
+        enqueueSnackbar('Book Created successfully', { variant: 'success' });
         navigate('/');
       })
       
       .catch((error) => {
         setLoading(false);
         alert('An error happened.');
+        enqueueSnackbar('Error', { variant: 'error' });
         console.log(error);
       });
   };
