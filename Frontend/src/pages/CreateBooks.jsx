@@ -11,37 +11,25 @@ const CreateBooks = () => {
   const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveBook = () => {
     const data = {
       title,
       author,
-      publishYear,
+      publishyear: publishYear, // Make sure this matches the backend expectation
     };
 
     setLoading(true);
     axios
-      .post("http://localhost:5555/books", data)
+     .post("http://localhost:5555/books", data)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar("Book Created successfully", { variant: "success" });
-        navigate("/");
+        navigate('/');
       })
+      
       .catch((error) => {
         setLoading(false);
-        if (error.response) {
-          enqueueSnackbar(
-            `Error: ${error.response.data.message || "An error occurred"}`,
-            { variant: "error" }
-          );
-        } else if (error.request) {
-          enqueueSnackbar("No response from server.", { variant: "error" });
-        } else {
-          enqueueSnackbar("Error. Please try again later.", {
-            variant: "error",
-          });
-        }
+        alert('An error happened.');
         console.log(error);
       });
   };
