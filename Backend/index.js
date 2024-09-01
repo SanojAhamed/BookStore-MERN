@@ -7,7 +7,6 @@ import bookRoute from './routes/bookRoute.js';
 import cors from 'cors';
 
 const app = express();
-
 app.use(express.json());
 
 // CORS POLICY
@@ -20,6 +19,7 @@ app.use(cors());
 //     allowedHeaders: ['Content-Type'],
 //   })
 // );
+
 
 app.get("/", (request, response) => {
   console.log(request);
