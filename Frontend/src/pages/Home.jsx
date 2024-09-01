@@ -5,10 +5,14 @@
     import { AiOutlineEdit } from "react-icons/ai";  // AiOutlineEdit - A component that displays an edit icon.
     import { BsInfoCircle } from "react-icons/bs";  // BsInfoCircle - A component that displays an info icon.
     import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";  // MdOutlineAddBox, MdOutlineDelete - Components that display an add and delete icon respectively.
+    import BooksTable from '../components/home/BooksTable';
+    import BooksCard from '../components/home/BooksCard';
 
     const Home = () => {                        // Home - A functional component that displays a list of books.
     const [books, setBooks] = useState([]);  
     const [loading, setLoading] = useState(false);
+    const [showType, setShowType] = useState('table');
+
     useEffect(() => {        // useEffect - A hook that runs after the first render and after every update.
         setLoading(true);
         axios
@@ -25,69 +29,34 @@
 
     return (
         <div className="p-4">
+      <div className='flex justify-center items-center gap-x-4 mt-5 mb-3'>
+        <button
+          className='bg-green-500 hover:bg-green-700 px-4 py-1 rounded-lg'
+          onClick={() => setShowType('table')}
+        >
+          Table
+        </button>
+        <button
+          className='bg-green-500 hover:bg-green-700 px-4 py-1 rounded-lg'
+          onClick={() => setShowType('card')}
+        >
+          Card
+        </button>
+
+      </div>    
         <div className="flex justify-between items-center">
             <h1 className="text-4xl font-bold text-green-700 py-4">Books List</h1>
             <Link to="/books/create">
             <MdOutlineAddBox className="text-sky-800 text-4xl" />
             </Link>
         </div>
-        {loading ? (
-            <Spinner />
-        ) : (
-            <table className="w-full border-separate border-spacing-2 py-4">
-            <thead>
-                <tr>
-                <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
-                    No
-                </th>
-                <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
-                    Title
-                </th>
-                <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
-                    Author
-                </th>
-                <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
-                    Publish Year
-                </th>
-                <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
-                    Operations
-                </th>
-                </tr>
-            </thead>
-            <tbody>
-                {books.map((book, index) => (    // map - A function that creates a new array with the results of calling.
-                <tr key={book._id} className="h-8">
-                    <td className="border border-slate-700 rounded-md text-center">
-                    {index + 1}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                    {book.title}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center max-md:hidden">
-                    {book.author}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center max-md:hidden">
-                    {book.publishyear}
-                    </td>
-
-                    <td className="border border-slate-700 rounded-md text-center">
-                    <div className="flex justify-center gap-x-4">
-                        <Link to={`/books/details/${book._id}`}>
-                        <BsInfoCircle className="text-2xl text-green-800" />
-                        </Link>
-                        <Link to={`/books/edit/${book._id}`}>
-                        <AiOutlineEdit className="text-2xl text-yellow-600" />
-                        </Link>
-                        <Link to={`/books/delete/${book._id}`}>
-                        <MdOutlineDelete className="text-2xl text-red-600" />
-                        </Link>
-                    </div>
-                    </td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
-        )}
+       {loading ? (
+        <Spinner />
+      ) : showType === 'table' ? (
+        <BooksTable books={books} />
+      ) : (
+        <BooksCard books={books} />
+      )}
         </div>
     );
     };
