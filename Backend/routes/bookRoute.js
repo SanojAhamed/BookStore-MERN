@@ -1,8 +1,9 @@
-import express from "express";
-import { Book } from "../models/booksmodel.js";
+import express from "express";  // import express
+import { Book } from "../models/booksmodel.js";  // import Book model
 
 
-const router = express.Router();
+
+const router = express.Router();  // create a router object using express
 
 // Route for Save a new Book
 router.post("/", async (request, response) => {
