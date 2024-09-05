@@ -5,6 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom"; // BrowserRouter - A component that uses the HTML5 history API to keep your UI in sync with the URL.
 import { SnackbarProvider, enqueueSnackbar } from "notistack";  //  SnackbarProvider - A component that provides the snackbar context to the application.
 
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <SnackbarProvider>

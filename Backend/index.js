@@ -1,13 +1,13 @@
-import express from "express";
+import express from "express"; 
 import { Book } from "./models/booksmodel.js";
 import { PORT, mongoDBURL } from "./config.js"; // import config.js file
-import mongoose from "mongoose";
-import bookRoute from './routes/bookRoute.js';
-import cors from 'cors';
+import mongoose from "mongoose";  // import mongoose package
+import bookRoute from './routes/bookRoute.js';  // import bookRoute
+import cors from 'cors';    // import cors package to enable CORS policy 
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json());  // Middleware - parse the request body to JSON object and attach to request object
 
 // CORS POLICY
 app.use(cors());
