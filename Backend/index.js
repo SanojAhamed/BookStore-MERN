@@ -1,4 +1,6 @@
+
 import express from "express"; 
+
 import { Book } from "./models/booksmodel.js";
 import { PORT, mongoDBURL } from "./config.js"; // import config.js file
 import mongoose from "mongoose";  // import mongoose package
@@ -8,6 +10,9 @@ import cors from 'cors';    // import cors package to enable CORS policy
 const app = express();
 
 app.use(express.json());  // Middleware - parse the request body to JSON object and attach to request object
+
+app.use(express.json());
+
 
 // CORS POLICY
 app.use(cors());
@@ -20,9 +25,10 @@ app.use(cors());
 //   })
 // );
 
+
 app.get("/", (request, response) => {
   console.log(request);
-  return response.status(234).send("Creat a first HTTP Route");
+  return response.status(234).send("Creat a first HTTP Route");  // Send a response to the client
 });
 
 app.use("/books", bookRoute); // Middelware - change the route
