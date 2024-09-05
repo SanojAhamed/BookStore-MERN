@@ -7,7 +7,6 @@ import bookRoute from './routes/bookRoute.js';
 import cors from 'cors';
 
 const app = express();
-
 app.use(express.json());
 
 // CORS POLICY
@@ -21,9 +20,10 @@ app.use(cors());
 //   })
 // );
 
+
 app.get("/", (request, response) => {
   console.log(request);
-  return response.status(234).send("Creat a first HTTP Route");
+  return response.status(234).send("Creat a first HTTP Route");  // Send a response to the client
 });
 
 app.use("/books", bookRoute); // Middelware - change the route
