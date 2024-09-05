@@ -6,14 +6,15 @@ import ShowBook from './pages/ShowBook';  // import ShowBook component from page
 import EditBook from './pages/EditBook'; // import EditBook component from pages/EditBook
 import DeleteBook from './pages/DeleteBook'; // import DeleteBook component from pages/DeleteBook
 
+
 const App = () => {
   return (
     <Routes>
       <Route path='/'element={<Home />} />
-      <Route path='/books/create' element={<CreateBooks />} />
-      <Route path='/books/details/:id' element={<ShowBook />} />
-      <Route path='/books/edit/:id' element={<EditBook />} />
-      <Route path='/books/delete/:id' element={<DeleteBook />} />
+      <Route path='/books/create' element={<CreateBooks />} />  // Create a new route for CreateBooks component
+      <Route path='/books/details/:id' element={<ShowBook />} />  // Create a new route for ShowBook component
+      <Route path='/books/edit/:id' element={<EditBook />} />   // Create a new route for EditBook component
+      <Route path='/books/delete/:id' element={<DeleteBook />} />  // Create a new route for DeleteBook component
     </Routes>
   );
 };
