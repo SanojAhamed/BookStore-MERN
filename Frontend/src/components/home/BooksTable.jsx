@@ -8,19 +8,19 @@ const BooksTable = ({ books }) => {
     <table className="w-full border-separate border-spacing-2 py-4">
     <thead>
         <tr>
-        <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
+        <th className="bg-green-600 text-white font-bold border border-green-700 rounded-md py-2 px-4">
             No
         </th>
-        <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
+        <th className="bg-green-600 text-white font-bold border border-green-700 rounded-md py-2 px-4">
             Title
         </th>
-        <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
+        <th className="bg-green-600 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
             Author
         </th>
-        <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
+        <th className="bg-green-600 text-white font-bold border border-green-700 rounded-md py-2 px-4 max-md:hidden">
             Publish Year
         </th>
-        <th className="bg-green-500 text-white font-bold border border-green-700 rounded-md py-2 px-4">
+        <th className="bg-green-600 text-white font-bold border border-green-700 rounded-md py-2 px-4">
             Operations
         </th>
         </tr>
